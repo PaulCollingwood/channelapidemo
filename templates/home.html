@@ -8,9 +8,13 @@
 <body>
 Token was {{ token }}<br>
 Client ID was {{ client_id }}
-</body>
-<a href="/message" target="_blank">Send Message To This Browser Tab</a>
 <h2>You will get 2 popup alerts sent from the server at 2 and 5 seconds after loading this page via the channel API</h2>
+<a href="/message" target="_blank">Send Message To This Browser Tab (opens in a new tab, don't close this one!)</a>
+<div id="messages">Messages so far:
+<ul>
+
+</ul></div>
+</body>
 <script>
 
     onOpened = function() {
@@ -19,6 +23,7 @@ Client ID was {{ client_id }}
     };
     onMessage = function(msg) {
         alert(msg.data);
+        $("#messages ul").append($("<li></li>").html(msg.data));
     };
     onError = function(err) {
     //    alert(err);
