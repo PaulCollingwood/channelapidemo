@@ -1,3 +1,8 @@
+__author__ = 'Paul Collingwood'
+# A simple version of the CHANNEL API from google
+# https://developers.google.com/appengine/docs/python/channel/
+# as the examples given can be overly complex for what is really quite simple.
+
 from google.appengine.api import channel
 from google.appengine.ext import deferred
 import webapp2
