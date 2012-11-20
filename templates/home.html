@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head><script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/_ah/channel/jsapi"></script>
+
+    <title></title>
+</head>
+<body>
+Token was {{ token }}<br>
+Client ID was {{ client_id }}
+</body>
+<a href="/message" target="_blank">Send Message To This Browser Tab</a>
+<h2>You will get 2 popup alerts sent from the server at 2 and 5 seconds after loading this page via the channel API</h2>
+<script>
+
+    onOpened = function() {
+        connected = true;
+       // sendMessage('opened');
+    };
+    onMessage = function(msg) {
+        alert(msg.data);
+    };
+    onError = function(err) {
+    //    alert(err);
+    };
+    onClose = function() {
+       // alert("close");
+     //   connected = false;
+    };
+    // open new session
+    channel = new goog.appengine.Channel('{{ token }}');
+    socket = channel.open();
+    socket.onopen = onOpened;
+    socket.onmessage = onMessage;
+    socket.onerror = onError;
+    socket.onclose = onClose;
+</script>
+
+</html>
