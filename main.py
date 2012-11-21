@@ -69,7 +69,7 @@ class Send_Message(BaseHandler):
         message = self.request.get("message")
        # token = self.session.get('channel_token') we don't need the token itself, just the user we're sending the message to.
         client_id = self.session['client_id']
-        result = channel.send_message(client_id,message)
+        channel.send_message(client_id,message)
         self.redirect('/message')
 
 
