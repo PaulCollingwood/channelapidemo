@@ -23,9 +23,9 @@ Client ID was {{ client_id }}
     };
     onMessage = function(msg) {
         alert(msg.data);
-        $("#messages ul").fadeOut();
+
         $("#messages ul").append($("<li></li>").html(msg.data));
-        $("#messages ul").fadeOut();
+
     };
     onError = function(err) {
     //    alert(err);
